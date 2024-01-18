@@ -88,19 +88,19 @@ public class Data {
         return ObjectUtil.objectDo(getData(key, JsonNode.NodeType.String), (it) -> it.getType() != JsonNode.NodeType.Null ? it.toString() : "null");
     }
 
-    public int putInt(String key) {
+    public int getInt(String key) {
         return ObjectUtil.objectDo(getData(key, JsonNode.NodeType.Int), (it) -> it.getType() != JsonNode.NodeType.Null ? (int) it.asTypeNode().getObj() : 0);
     }
 
-    public boolean putBoolean(String key) {
+    public boolean getBoolean(String key) {
         return ObjectUtil.objectDo(getData(key, JsonNode.NodeType.Boolean), (it) -> it.getType() != JsonNode.NodeType.Null && (boolean) it.asTypeNode().getObj());
     }
 
-    public double putDouble(String key) {
+    public double getDouble(String key) {
         return ObjectUtil.objectDo(getData(key, JsonNode.NodeType.Double), (it) -> it.getType() != JsonNode.NodeType.Null ? (double) it.asTypeNode().getObj() : 0.0);
     }
 
-    public float putFloat(String key) {
+    public float getFloat(String key) {
         return ObjectUtil.objectDo(getData(key, JsonNode.NodeType.Float), (it) -> it.getType() != JsonNode.NodeType.Null ? (float) it.asTypeNode().getObj() : 0.0f);
     }
 
