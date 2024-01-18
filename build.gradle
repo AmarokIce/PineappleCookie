@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group = 'club.someoneice.cookie'
+version = '1.0'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+
+    maven {
+        allowInsecureProtocol = true
+        name = "AmarokMaven"
+        url = "http://maven.snowlyicewolf.club/"
+    }
+}
+
+dependencies {
+    implementation "club.someoneice.json:amarok-json-for-java:${project.AJ4JVersion}"
+
+    implementation "org.apache.logging.log4j:log4j-api:${project.Log4JVersion}"
+    implementation "org.apache.logging.log4j:log4j-core:${project.Log4JVersion}"
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact jar
+        }
+    }
+
+    repositories {
+        mavenLocal()
+    }
+}
