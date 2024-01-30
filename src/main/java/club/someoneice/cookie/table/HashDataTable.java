@@ -1,9 +1,9 @@
-package club.someoneice.cookie.data;
+package club.someoneice.cookie.table;
 
-import club.someoneice.cookie.util.DataUtil;
 import club.someoneice.cookie.util.ObjectUtil;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Set;
 
 public class HashDataTable<X, Y, Z> {
@@ -38,7 +38,7 @@ public class HashDataTable<X, Y, Z> {
     }
 
     public HashDataTable<X, Y, Z> copy() {
-        return ObjectUtil.objectRun(DataUtil.newHashDataTable(), (it) -> {
+        return ObjectUtil.objectRun(new HashDataTable<>(), (it) -> {
             it.table.putAll(this.table);
         });
     }
@@ -56,6 +56,6 @@ public class HashDataTable<X, Y, Z> {
     }
 
     public Set<HashMap<Y, Z>> valueSet() {
-        return DataUtil.newHashSet(table.values());
+        return new HashSet<>(table.values());
     }
 }

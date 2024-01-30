@@ -1,8 +1,7 @@
 package club.someoneice.cookie.event;
 
 import club.someoneice.cookie.Info;
-import club.someoneice.cookie.data.HashDataTable;
-import club.someoneice.cookie.util.DataUtil;
+import club.someoneice.cookie.table.HashDataTable;
 import club.someoneice.cookie.util.ObjectUtil;
 
 import java.lang.reflect.Method;
@@ -10,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class EventBus {
-    private static HashDataTable<Class<? extends Event>, Event.Priority, ArrayList<Method>> events = DataUtil.newHashDataTable();
+    private static HashDataTable<Class<? extends Event>, Event.Priority, ArrayList<Method>> events = new HashDataTable<>();
 
     public static <T extends Event> T post(T event) {
         if (!events.containsKey(event.getClass())) return event;
@@ -51,6 +50,7 @@ public class EventBus {
         register(obj.getClass());
     }
 
+    @SuppressWarnings("unchecked")
     public static void register(Class<?> obj) {
         for (Method method : obj.getDeclaredMethods()) {
             if (!method.isAnnotationPresent(SubEvent.class)) continue;
@@ -58,7 +58,7 @@ public class EventBus {
             if (!clazz.isAssignableFrom(Event.class)) return;
             Event.Priority priority = method.getDeclaredAnnotation(SubEvent.class).value();
             events.put((Class<? extends Event>) clazz, priority, ObjectUtil.objectRun(
-                    events.getOrDef((Class<? extends Event>) clazz, priority, DataUtil.newArrayList()),
+                    events.getOrDef((Class<? extends Event>) clazz, priority, new ArrayList<>()),
                     (it) -> { it.add(method); }));
         }
     }
