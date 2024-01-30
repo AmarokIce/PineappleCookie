@@ -1,23 +1,23 @@
 package club.someoneice.cookie.data;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 import club.someoneice.cookie.util.ObjectUtil;
 import club.someoneice.json.node.*;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public class HashData extends Data {
-    public HashData() {
-        super(new HashMap<>(), "NoNameTable");
+public class ConcurrentHashData extends Data {
+    public ConcurrentHashData() {
+        super(new ConcurrentHashMap<>(), "NoNameTable");
     }
 
-    public HashData(String name) {
-        super(new HashMap<>(), name);
+    public ConcurrentHashData(String name) {
+        super(new ConcurrentHashMap<>(), name);
     }
 
-    public HashMap<String, Object> getRawList() {
+    public ConcurrentHashMap<String, Object> getRawList() {
         Map<String, JsonNode<?>> map = mapNode.getObj();
-        return ObjectUtil.objectLet(new HashMap<>(), (it) -> {
+        return ObjectUtil.objectLet(new ConcurrentHashMap<>(), (it) -> {
             map.forEach((key, value) -> it.put(key, value.getObj()));
         });
     }
@@ -51,7 +51,7 @@ public class HashData extends Data {
     }
 
     public Data get(String key) {
-        return this.get(key, new HashData());
+        return this.get(key, new ConcurrentHashData());
     }
 
     public Data get(String key, Data data) {

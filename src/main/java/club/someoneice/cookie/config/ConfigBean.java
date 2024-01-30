@@ -1,7 +1,6 @@
 package club.someoneice.cookie.config;
 
 import club.someoneice.cookie.util.ConfigUtil;
-import club.someoneice.cookie.util.DataUtil;
 import club.someoneice.cookie.util.ObjectUtil;
 import club.someoneice.json.JSON;
 import club.someoneice.json.node.JsonNode;
@@ -9,17 +8,18 @@ import club.someoneice.json.node.MapNode;
 import club.someoneice.json.processor.Json5Builder;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Config Bean V2 - By Someoneice(AmarokIce)
  * @author Someoneice
  * */
-@SuppressWarnings({"unchecked", "unused"})
+@SuppressWarnings({"unchecked"})
 public final class ConfigBean {
     private final Json5Builder.ObjectBean mapBean = ConfigUtil.INITIALIZE.getObjectBean();
     private final MapNode nodeBase;
-    private final Map<String, Json5Builder.ObjectBean> nodeMapping = DataUtil.newHashMap();
+    private final Map<String, Json5Builder.ObjectBean> nodeMapping = new HashMap<>();
     private final File file;
 
     public ConfigBean(String filePath) {

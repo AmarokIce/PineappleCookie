@@ -7,14 +7,17 @@ import club.someoneice.json.node.MapNode;
 
 public abstract class Data {
     public final String name;
-    protected final MapNode mapNode = new MapNode();
+    protected final MapNode mapNode;
 
     protected Data(Map<String, JsonNode<?>> map, String name) {
         this.name = name;
-        map.forEach(this.mapNode::put);
+        this.mapNode = new MapNode(map);
     }
 
-    abstract public MapNode getRawNode();
+    public MapNode getRawNode() {
+        return this.mapNode;
+    }
+
     abstract public Map<String, ?> getRawList();
 
     abstract void       put(Data value);
