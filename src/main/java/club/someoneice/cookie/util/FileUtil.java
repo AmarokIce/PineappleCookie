@@ -2,7 +2,6 @@ package club.someoneice.cookie.util;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 
 public final class FileUtil {
     private FileUtil() {}
