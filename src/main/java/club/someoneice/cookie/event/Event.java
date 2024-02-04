@@ -2,6 +2,7 @@ package club.someoneice.cookie.event;
 
 public abstract class Event {
     public boolean shouldCancel = false;
+    protected Event() {}
 
     public void setCancel() {
         if (!this.getClass().isAnnotationPresent(Cancelable.class))

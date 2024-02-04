@@ -36,7 +36,6 @@ public class EventBus {
         return event;
     }
 
-    @SuppressWarnings("deprecation")
     public static <T extends Event> T post(Class<T> eventClazz) {
         try {
             T event = eventClazz.newInstance();

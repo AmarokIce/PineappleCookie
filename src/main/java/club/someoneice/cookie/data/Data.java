@@ -20,17 +20,17 @@ public abstract class Data {
 
     abstract public Map<String, ?> getRawList();
 
-    abstract void       put(Data value);
-    abstract void       put(String key, Data value);
-    abstract void       putString(String key, String value);
-    abstract void       putInt(String key, int value);
-    abstract void       putDouble(String key, double value);
-    abstract void       putBoolean(String key, boolean value);
+    abstract public void       put(Data value);
+    abstract public void       put(String key, Data value);
+    abstract public void       putString(String key, String value);
+    abstract public void       putInt(String key, int value);
+    abstract public void       putDouble(String key, double value);
+    abstract public void       putBoolean(String key, boolean value);
 
-    abstract Data       get(String key);
-    abstract Data       get(String key, Data data);
-    abstract String     getString(String key);
-    abstract int        getInt(String key);
-    abstract double     getDouble(String key);
-    abstract boolean    getBoolean(String key);
+    abstract public Data       get(String key);
+    abstract public Data       get(String key, Data data);
+    abstract public String     getString(String key);
+    abstract public int        getInt(String key);
+    abstract public double     getDouble(String key);
+    abstract public boolean    getBoolean(String key);
 }
